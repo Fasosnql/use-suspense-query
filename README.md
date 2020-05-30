@@ -58,8 +58,8 @@ export function App() {
 }
 ```
 
-###Hook API
-```
+### Hook API
+```jsx
 useSuspenseQuery(query: GraphqlQuery, options: Options): Response of ApolloClient.query()
 ```
 
@@ -69,4 +69,4 @@ useSuspenseQuery(query: GraphqlQuery, options: Options): Response of ApolloClien
 | ------------- |:-------------:| -----:|
 | variables     | query variables | Object |
 | fetchPolicy     | fetch policy option passing to ApolloClient fetchPolicy field      |   String  |
-| uniqueKey | In default that key is generated based on variables and query, but if you want be sure that your request is totally unique, you should pass this field with some unique value.     |    string |
+| uniqueKey | In default that key is generated based on variables and query, but to be sure that your request is totally unique, you should pass this field with some unique value - recommended to add uniqueKey!    |    String |
