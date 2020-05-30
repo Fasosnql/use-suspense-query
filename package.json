@@ -1,0 +1,33 @@
+{
+  "name": "use-suspense-query",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
+  "files": [
+    "dist"
+  ],
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "rollup -c"
+  },
+  "author": "Przemyslaw Nowak <nowak_przemek@yahoo.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@types/react": "^16.9.35",
+    "ramda": "^0.27.0",
+    "uuid": "^8.1.0"
+  },
+  "peerDependencies": {
+    "apollo-client": "^2.6.0",
+    "graphql": "*",
+    "react": "^16.8.0"
+  },
+  "devDependencies": {
+    "react": "^16.13.1",
+    "rollup": "^2.11.2",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-typescript2": "^0.27.1",
+    "typescript": "^3.9.3"
+  }
+}
