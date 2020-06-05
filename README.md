@@ -3,7 +3,7 @@
 ## How to use
 
 ```shell script
-$ npm install use-suspense-query
+$ npm install @brainly/use-suspense-query
 ```
 
 To use hook in your app you have to provide apollo client via. `SuspenseQueryProvider` i.e:
