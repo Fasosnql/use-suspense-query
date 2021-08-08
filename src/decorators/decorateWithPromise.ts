@@ -1,4 +1,20 @@
-export function decorateWithPromise([error, {apolloClient, id, options, query}, result]) {
+import type { OperationVariables } from '@apollo/client';
+import { Client, QueryDocument, QueryOptions } from '../types/types';
+
+export function decorateWithPromise<TData, TVariables = OperationVariables>([
+  error,
+  { apolloClient, id, options, query },
+  result,
+]: [
+  Error,
+  {
+    apolloClient: Client;
+    id: string | number;
+    options: QueryOptions<TData, TVariables>;
+    query: QueryDocument<TData, TVariables>;
+  },
+  TData
+]) {
   if (error) {
     console.error(error);
     return [null, null, null];
@@ -8,9 +24,12 @@ export function decorateWithPromise([error, {apolloClient, id, options, query}, 
     return [null, null, result];
   }
 
-  return [id, apolloClient.query({
-    query,
-    variables: options?.variables || {},
-    fetchPolicy: options?.variables || 'cache-first'
-  })]
+  return [
+    id,
+    apolloClient.query({
+      query,
+      variables: options?.variables || {},
+      fetchPolicy: options?.fetchPolicy || 'cache-first',
+    }),
+  ];
 }

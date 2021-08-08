@@ -1,27 +1,31 @@
-import { queriesStore } from "./queries-store";
+import { queriesStore } from './queries-store';
 
-export function throwPromise(promise, id) {
-  // @ts-ignore
-  const elementIndex = queriesStore.findIndex(query => query.id === id);
+export function throwPromise<TData>(
+  promise: Promise<TData>,
+  id: string | number
+) {
+  const elementIndex = queriesStore.findIndex((query) => query.id === id);
   const element = queriesStore[elementIndex];
 
   if (!element) {
-    return null;
+    throw new Error(
+      '[useSuspendedQuery] Invalid call. Query is missing from the store'
+    );
   }
 
   throw promise
     .then(
-      result => {
+      (result) => {
         element.status = 'success';
         element.result = result;
       },
-      error => {
-        element.status = "error";
+      (error) => {
+        element.status = 'error';
         element.result = JSON.stringify(error);
       }
     )
-    .catch(e => {
-      element.status = "error";
+    .catch((e) => {
+      element.status = 'error';
       element.result = JSON.stringify(e);
     });
 }

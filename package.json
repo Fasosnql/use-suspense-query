@@ -16,15 +16,17 @@
   "license": "MIT",
   "dependencies": {
     "@types/react": "^16.9.35",
+    "@apollo/client": "^3",
+    "graphql": "*",
     "ramda": "^0.27.0",
     "uuid": "^8.1.0"
   },
   "peerDependencies": {
     "apollo-client": "^2.6.0",
-    "graphql": "*",
     "react": "^16.8.0"
   },
   "devDependencies": {
+    "prettier": "^2.3.2",
     "react": "^16.13.1",
     "rollup": "^2.11.2",
     "rollup-plugin-commonjs": "^10.1.0",
