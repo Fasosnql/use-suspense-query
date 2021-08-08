@@ -1,8 +1,8 @@
-import { queriesStore } from "./queries-store";
+import { queriesStore } from './queries-store';
 
 export function throwPromise(promise, id) {
   // @ts-ignore
-  const elementIndex = queriesStore.findIndex(query => query.id === id);
+  const elementIndex = queriesStore.findIndex((query) => query.id === id);
   const element = queriesStore[elementIndex];
 
   if (!element) {
@@ -11,17 +11,17 @@ export function throwPromise(promise, id) {
 
   throw promise
     .then(
-      result => {
+      (result) => {
         element.status = 'success';
         element.result = result;
       },
-      error => {
-        element.status = "error";
+      (error) => {
+        element.status = 'error';
         element.result = JSON.stringify(error);
       }
     )
-    .catch(e => {
-      element.status = "error";
+    .catch((e) => {
+      element.status = 'error';
       element.result = JSON.stringify(e);
     });
 }

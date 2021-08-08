@@ -2,7 +2,9 @@ import { queriesStore } from './queries-store';
 
 export function manageValueInStore(args): [boolean | Error, any, any?] {
   // @ts-ignore
-  const indexQueryInStore = queriesStore.findIndex(query => query.id === args.id);
+  const indexQueryInStore = queriesStore.findIndex(
+    (query) => query.id === args.id
+  );
   const queryInStore = queriesStore[indexQueryInStore];
 
   if (queryInStore && queryInStore.status !== 'pending') {
@@ -16,8 +18,8 @@ export function manageValueInStore(args): [boolean | Error, any, any?] {
     queriesStore.push({
       id: args.id,
       status: 'pending',
-      result: null
-    })
+      result: null,
+    });
   }
 
   return [false, args];
