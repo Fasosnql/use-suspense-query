@@ -8,7 +8,10 @@
     "declarationDir": "./dist",
     "noImplicitAny": false,
     "outDir": "./dist",
-    "target": "es5"
+    "target": "es5",
+    "moduleResolution": "node",
+    "strict": true,
+    
   },
   "include": ["src/**/*"]
 }

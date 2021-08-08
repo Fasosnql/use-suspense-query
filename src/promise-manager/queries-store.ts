@@ -1,7 +1,7 @@
-export interface QueryStore {
-  id: string;
+export interface QueryStore<TData = any> {
+  id: string | number;
   status: string;
-  result: any;
+  result: TData;
 }
 
 export const queriesStore: QueryStore[] = [];

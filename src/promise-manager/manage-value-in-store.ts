@@ -1,6 +1,8 @@
 import { queriesStore } from './queries-store';
 
-export function manageValueInStore(args): [boolean | Error, any, any?] {
+export function manageValueInStore(args: {
+  id: string | number;
+}): [boolean | Error, any, any?] {
   // @ts-ignore
   const indexQueryInStore = queriesStore.findIndex(
     (query) => query.id === args.id

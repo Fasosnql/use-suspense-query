@@ -1,12 +1,16 @@
 import { queriesStore } from './queries-store';
 
-export function throwPromise(promise, id) {
-  // @ts-ignore
+export function throwPromise<TData>(
+  promise: Promise<TData>,
+  id: string | number
+) {
   const elementIndex = queriesStore.findIndex((query) => query.id === id);
   const element = queriesStore[elementIndex];
 
   if (!element) {
-    return null;
+    throw new Error(
+      '[useSuspendedQuery] Invalid call. Query is missing from the store'
+    );
   }
 
   throw promise
